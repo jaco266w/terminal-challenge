@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <template>
+        <article>
+            <h1>Hi mom</h1>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+            <p>bla, bla</p>
+        </article>
+    </template>
+
+    
+    <div id="list"></div>
+    <div id="loadmore">Load more articles</div>
+    
+    <script>
+        "use strict";
+        const options = {
+            rootMargin: '0px',
+            threshold: 1.0
+        }
+        const t = document.querySelector("template").content;
+        const list = document.querySelector("#list");
+      
+        const observer = new IntersectionObserver(callback, options);
+        const target = document.querySelector('#loadmore');
+        observer.observe(target);
+
+        function callback(entries, observer) {
+            entries.forEach(entry => {
+                //if (entry.isIntersecting) {//observer fires once when the page loads
+                    setTimeout(function() {
+                        loadMore(10);
+                    }, 2000);
+                //}
+            });
+        };
+        let globalCounter = 0;
+
+        function loadMore(amount) {
+            for (let i = 0; i < amount; i++) {
+                globalCounter++;
+                let c = t.cloneNode(true);
+                c.querySelector("h1").textContent = "Article number " + globalCounter;
+                list.appendChild(c);
+            }
+        }
+    </script>
+</body>
+
+</html>
