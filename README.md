@@ -10,8 +10,7 @@
   2. in the <code>src</code> folder, create the following structure
     - <code>css/main.css</code>
     - <code>js/index.js</code>
-    - <code>assets/gfx/</code>
-       
+    - <code>assets/gfx/</code>     
   3. delete everything inside the <code>dist</code> folder
   4. copy everything from the <code>src</code> folder to the <code>dist</code> folder
      
